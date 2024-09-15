@@ -5,6 +5,7 @@
  * @format
  */
 
+import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
@@ -88,6 +89,7 @@ function App(): React.JSX.Element {
           </Section>
           <Section title="Learn More">
             Read the docs to discover what to do next:
+            <Icon name="rocket" size={30} color="#900" />;
           </Section>
           <LearnMoreLinks />
         </View>
