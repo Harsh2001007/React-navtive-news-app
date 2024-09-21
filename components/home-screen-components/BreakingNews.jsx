@@ -31,7 +31,12 @@ export default function BreakingNews({newList}) {
           data={data}
           keyExtractor={(_, index) => `list_item${index}`}
           renderItem={({item, index}) => (
-            <SliderItem slideItem={item} index={index} scrollX={scrollX} />
+            <SliderItem
+              slideItem={item}
+              index={index}
+              scrollX={scrollX}
+              item={'tester'}
+            />
           )}
           horizontal
           showsHorizontalScrollIndicator={false}

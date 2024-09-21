@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import WelcomeScreen from './WelcomeScreen';
 import HomeScreen from './HomeScreen';
@@ -8,14 +8,14 @@ import SavedScreen from './SavedScreen';
 import SettingScreen from './SettingScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
+import ArticleDetail from './ArticleScreen';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
 function BottomBar() {
-  const navigation = useNavigation();
-
   return (
     <BottomTab.Navigator>
       <BottomTab.Screen
@@ -67,6 +67,23 @@ export default function AllScreenHolder() {
           options={{
             headerShown: false,
           }}
+        />
+        <Stack.Screen
+          name="article-screen"
+          component={ArticleDetail}
+          options={({navigation}) => ({
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('home-screen')}>
+                <Icon name="arrow-back-outline" size={22} />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <TouchableOpacity>
+                <Icon name="heart-outline" size={22} />
+              </TouchableOpacity>
+            ),
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>

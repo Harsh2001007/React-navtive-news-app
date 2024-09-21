@@ -44,7 +44,11 @@ export default function HomeScreen() {
 
   const getNews = async category => {
     try {
-      const API_URL = `https://newsdata.io/api/1/news?apikey=pub_53587c3b9469dbcbd6f9c0f485b10beb5d828&language=en&image=1&removeduplicate=1&size=10`;
+      let categoryString = '';
+      if (category.length !== 0) {
+        categoryString = `&category=${category}`;
+      }
+      const API_URL = `https://newsdata.io/api/1/news?apikey=pub_53587c3b9469dbcbd6f9c0f485b10beb5d828&language=en&image=1&removeduplicate=1&size=10${categoryString}`;
 
       const response = await axios.get(API_URL);
       if (response && response.data) {

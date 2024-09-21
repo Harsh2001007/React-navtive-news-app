@@ -1,5 +1,12 @@
 import 'react-native-gesture-handler';
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../constants/Colors';
@@ -8,10 +15,15 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
+import {useNavigation} from '@react-navigation/native';
 
 const {width} = Dimensions.get('screen');
 
-export default function SliderItem({slideItem, index, scrollX}) {
+export default function SliderItem({slideItem, index, scrollX, item}) {
+  const navigation = useNavigation();
+  const redirectionHandler = () => {
+    navigation.navigate('article-screen', {myKey: slideItem});
+  };
   const rnStyle = useAnimatedStyle(() => {
     return {
       transform: [
@@ -35,27 +47,29 @@ export default function SliderItem({slideItem, index, scrollX}) {
     };
   });
   return (
-    <Animated.View
-      key={SliderItem.article_id}
-      style={[styles.itemWrapper, rnStyle]}>
-      <Image source={{uri: slideItem.image_url}} style={styles.image} />
-      <LinearGradient
-        colors={['transparent', 'rgba(0,0,0,0.8)']}
-        style={styles.background}>
-        <View style={styles.sourceInfo}>
-          {slideItem.source_icon && (
-            <Image
-              source={{uri: slideItem.source_icon}}
-              style={styles.sourceIcon}
-            />
-          )}
-          <Text style={styles.sourceName}>{slideItem.source_name}</Text>
-        </View>
-        <Text style={styles.title} numberOfLines={2}>
-          {slideItem.title}
-        </Text>
-      </LinearGradient>
-    </Animated.View>
+    <TouchableOpacity onPress={redirectionHandler} style={{borderWidth: 1}}>
+      <Animated.View
+        key={SliderItem.article_id}
+        style={[styles.itemWrapper, rnStyle]}>
+        <Image source={{uri: slideItem.image_url}} style={styles.image} />
+        <LinearGradient
+          colors={['transparent', 'rgba(0,0,0,0.8)']}
+          style={styles.background}>
+          <View style={styles.sourceInfo}>
+            {slideItem.source_icon && (
+              <Image
+                source={{uri: slideItem.source_icon}}
+                style={styles.sourceIcon}
+              />
+            )}
+            <Text style={styles.sourceName}>{slideItem.source_name}</Text>
+          </View>
+          <Text style={styles.title} numberOfLines={2}>
+            {slideItem.title}
+          </Text>
+        </LinearGradient>
+      </Animated.View>
+    </TouchableOpacity>
   );
 }
 
