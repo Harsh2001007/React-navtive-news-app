@@ -47,7 +47,7 @@ export default function SliderItem({slideItem, index, scrollX, item}) {
     };
   });
   return (
-    <TouchableOpacity onPress={redirectionHandler} style={{borderWidth: 1}}>
+    <TouchableOpacity onPress={redirectionHandler}>
       <Animated.View
         key={SliderItem.article_id}
         style={[styles.itemWrapper, rnStyle]}>

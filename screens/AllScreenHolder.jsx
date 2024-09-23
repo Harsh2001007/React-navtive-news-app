@@ -28,9 +28,7 @@ function BottomBar() {
       <BottomTab.Screen
         name="discover-screen"
         component={DiscoverScreen}
-        options={{
-          headerShown: false,
-        }}
+        options={{headerTitle: 'Discover'}}
       />
       <BottomTab.Screen
         name="saved-screen"
