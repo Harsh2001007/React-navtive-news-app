@@ -1,16 +1,10 @@
 import 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {StyleSheet} from 'react-native';
 import AllScreenHolder from './screens/AllScreenHolder';
+import {initialize} from '@microsoft/react-native-clarity';
+
+initialize('qeyesnufht');
 
 function App() {
   return <AllScreenHolder />;

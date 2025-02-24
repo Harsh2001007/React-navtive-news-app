@@ -9,7 +9,7 @@ export default function Searchbar() {
       <View style={styles.searchbar}>
         <Icon name="search-outline" size={20} color={Colors.lightGrey} />
         <TextInput
-          placeholder="Search"
+          placeholder="search any news of your choice"
           autoCapitalize=""
           placeholderTextColor={Colors.lightGrey}
           style={styles.searchText}
